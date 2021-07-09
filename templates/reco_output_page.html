@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <div>
+            {{ names | safe }}
+        </div>
+        <div>
+            {{ names_adress | safe }}
+        </div>
+        <div>
+            {{ descriptions | safe }}
+        </div>
+        <div>
+         {{ links | safe }}
+        </div>
+{% endblock %}
