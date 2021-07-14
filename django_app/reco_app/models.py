@@ -95,20 +95,53 @@ role_choices = (
 	(SORT, 'Sort'),
 	)
 
+# Organization types
+SUS = 'sustainable restaurant'
+EDU = 'educate and assist children'
+REST = 'restaurant/catering service'
+FOOD = 'food insecurity'
+FOODA = 'food insecurity and autonomy'
+FOODW = 'food insecurity and women'
+FOODH = 'food insecurity and homeless'
+COMM = 'community services'
+COMMY = 'community services - youth'
+VAR = 'various community services'
+
+organization_types = (
+	(SUS, SUS),
+	(EDU, EDU),
+	(REST, REST),
+	(FOOD, FOOD),
+	(FOODA, FOODA),
+	(FOODW, FOODW),
+	(FOODH, FOODH),
+	(COMM, COMM),
+	(COMMY, COMMY),
+	(VAR, VAR),
+			 )
 
 class User_input(models.Model):
 	## model fields
-	locations = MultiSelectField(choices = location_choices,
+	locations = MultiSelectField(choices=location_choices,
 		max_choices = 2,
 		max_length = 60)
-	services = MultiSelectField(choices = service_size_choices,
+	services = MultiSelectField(choices=service_size_choices,
 		max_choices = 2,
 		max_length = 60)
-	organizations = MultiSelectField(choices = organization_size_choices,
+	organizations = MultiSelectField(choices=organization_size_choices,
 		max_choices = 2,
 		max_length = 60)
-	roles = MultiSelectField(choices = role_choices,
+	roles = MultiSelectField(choices=role_choices,
 		max_choices = 2,
 		max_length = 60)
-	
+
+class Organization(models.Model):
+	name = models.CharField(max_length=100)
+	locations = models.CharField(max_length=50, choices=location_choices)
+	organization_size = models.CharField(max_length=10, choices=organization_size_choices)
+	service_size = models.CharField(max_length=10, choices=service_size_choices)
+	organization_type = models.CharField(max_length=50, choices=organization_types)
+	roles = MultiSelectField(choices=role_choices,
+		max_choices = 2,
+		max_length = 60)
 

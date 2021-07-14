@@ -6,6 +6,7 @@ import json
 
 ## MODEL VIEW
 from .forms import userinput_form
+# from .forms import userinput_form, organization_form
 from .models import User_input
 from django.core import serializers
 import reco_app.recommendation as rec
@@ -44,9 +45,28 @@ def userinput_create_view(request):
 	}
 	return render(request, "userinput_page.html", context)
 
+
 def rec_create_view(request):
 	data = request.session.get('locations', None) + request.session.get('services', None) + request.session.get('organizations', None) + request.session.get('roles', None)
 	print(data)
 	names, names_adress, descriptions, links = rec.predict(data)
 	return render(request, 'reco_output_page.html', {'names': names, 'names_adress': names_adress, 'descriptions': descriptions, 'links': links, 'range_top': [0, 1, 2], 'range_bottom': [3, 4]})
 
+
+'''
+def organizationcreate_view(request):
+	my_form = organization_form()
+	if request.method == "POST":
+		my_form = organization_form(request.POST or None) #create instance of a class
+		if my_form.is_valid():
+			User_input.objects.create(**my_form.cleaned_data) #if the form is valid create an instance in the database\
+			request.session['name'] = request.POST.getlist('name')
+			request.session['locations'] = request.POST.getlist('locations')
+			request.session['service_size'] = request.POST.getlist('service_size')
+			request.session['organization_size'] = request.POST.getlist('organization_size')
+			request.session['organization_type'] = request.POST.getlist('organization_type')
+			request.session['roles'] = request.POST.getlist('roles')
+		#now the data is good
+		else:
+			print(my_form.errors) #print the error (missing field etc. -- this is detected automatically by django)
+'''
