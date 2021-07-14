@@ -48,5 +48,5 @@ def rec_create_view(request):
 	data = request.session.get('locations', None) + request.session.get('services', None) + request.session.get('organizations', None) + request.session.get('roles', None)
 	print(data)
 	names, names_adress, descriptions, links = rec.predict(data)
-	return render(request, 'reco_output_page.html', {'names': names, 'names_adress': names_adress, 'descriptions': descriptions, 'links': links})
+	return render(request, 'reco_output_page.html', {'names': names, 'names_adress': names_adress, 'descriptions': descriptions, 'links': links, 'range_top': [0, 1, 2], 'range_bottom': [3, 4]})
 
