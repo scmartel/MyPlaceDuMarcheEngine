@@ -5,7 +5,6 @@
 from pathlib import Path
 import os
 
-
 ### DIRECTORIES
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -75,10 +74,20 @@ WSGI_APPLICATION = 'django_app.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 # internal django database
 
+host_name = "" # ADD IP HERE
+port_name = '3306'
+username = "myplaced_myplacedumarche"
+password = "Mcfac_2020_mma"
+db_name = "myplaced_WP1DL"
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': db_name,
+        'USER': username,
+        'PASSWORD': password,
+        'HOST': host_name,
+        'PORT': port_name,
     }
 }
 
