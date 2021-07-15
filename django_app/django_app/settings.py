@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'django_app.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 # internal django database
 
-host_name = "" # ADD IP HERE
+host_name = '50.87.170.37' # ADD IP HERE
 port_name = '3306'
 username = "myplaced_myplacedumarche"
 password = "Mcfac_2020_mma"
