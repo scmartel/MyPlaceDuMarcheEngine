@@ -14,7 +14,6 @@ TEMPLATE_DIR = Path(BASE_DIR, 'templates')
 BASE_DIR2 = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMP_DIR = os.path.join(BASE_DIR, 'templates')
 
-
 # SECURITY WARNING: keep the secret key used in production secret!
 ## this key can be changed for security concerns -- to change once in a while
 SECRET_KEY = 'django-insecure-t@7evwk2#mx1g_zjy#@1dck^k(tg#m47tl$pby+f7%wj0&(b=t'

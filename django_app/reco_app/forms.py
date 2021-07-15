@@ -9,7 +9,7 @@ from .models import User_input
 # import rest_framework
 # from rest_framework import fields, serializers
 from django import forms
-from reco_app.models import location_choices, service_size_choices, organization_size_choices, role_choices
+from reco_app.models import location_choices, service_size_choices, organization_size_choices, role_choices, organization_types
 
 
 class userinput_form(forms.Form):
@@ -32,4 +32,15 @@ class userinput_form(forms.Form):
     services = forms.CharField(label='Select service choices', widget=forms.Select(choices=service_size_choices))
     organizations = forms.CharField(label='Select organization size choices', widget=forms.Select(choices=organization_size_choices))
     roles = forms.CharField(label='Select desired roles', widget=forms.Select(choices=role_choices))
+'''
+
+# Organization Form - not needed for now
+'''
+class organization_form(forms.Form):
+    name = forms.CharField(label='Enter organization name')
+    locations = forms.CharField(label='Select a desired location', widget=forms.Select(choices=location_choices))
+    service_size = forms.CharField(label='Select service size', widget=forms.Select(choices=service_size_choices))
+    organization_size = forms.CharField(label='Select organization size', widget=forms.Select(choices=organization_size_choices))
+    organization_type = forms.CharField(label='Select organization type', widget=forms.Select(choices=organization_types))
+    roles = forms.MultipleChoiceField(label='Select desired roles', choices=role_choices, widget=forms.CheckboxSelectMultiple)
 '''
