@@ -5,6 +5,7 @@ import pickle
 import mysql.connector
 import sys
 
+# DATABASE
 # define credentials
 host_name = '50.87.170.37' # ADD IP HERE
 port_name = '3306'
